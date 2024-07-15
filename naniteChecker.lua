@@ -1,20 +1,22 @@
 component = require("component")
-modem = component.modem
+m = component.modem
 event = require("event")
 
-modem.open(2)
-modem.broadcast(1,"nanomachines", "setResponsePort", 2)
-_, _, _, _, _, name = event.pull(10,"modem_message")
-if name == "SkiddyMango3125" then
-modem.broadcast(1,"nanomachines", "getTotalInputCount")
-inputs = event.pull(10, "modem_message")
+m.open(2)
+m.open(1)
+
+m.broadcast(1,"nanomachines", "setResponsePort", 2)
+m.broadcast(1, "nanomachines", "getName")
+_, _, _, _, _, name = event.pull("modem_message")
+if name ~= "" then
+m.broadcast(1,"nanomachines", "getTotalInputCount")
+_, _, _, _, _, inputs = event.pull("modem_message")
 for i = 1, inputs + 1 do
-modem.broadcast(1,"nanomachines", "setInput", i, true)
+m.broadcast(1,"nanomachines", "setInput", i, true)
 os.sleep(1)
-modem.broadcast(1,"nanomachines", "getActiveEffects")
-_, _, _, _, _, result = event.pull(10,"modem_message")
+m.broadcast(1,"nanomachines", "getActiveEffects")
+_, _, _, _, _, result = event.pull("modem_message")
 print(result)
-modem.broadcast(1,"nanomachines", "setInput", i, false)
+m.broadcast(1,"nanomachines", "setInput", i, false)
 end
 end
-modem.close(2)
