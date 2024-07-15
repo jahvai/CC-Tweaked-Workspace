@@ -6,12 +6,15 @@ args, ops = shell.parse(...)
 m.open(2)
 m.open(1)
 
+local opsCount = 0
+for _ in pairs(ops) do opsCount = opsCount + 1 end
+
 m.broadcast(1,"nanomachines", "setResponsePort", 2)
 event.pull("modem_message")
 m.broadcast(1,"nanomachines", "getTotalInputCount")
 _, _, _, _, _, _, _, inputs = event.pull("modem_message")
 print(inputs)
-if #ops == 0 then
+if #opsCount == 0 then
 for i = 1, inputs do
 m.broadcast(1,"nanomachines", "setInput", i, true)
 os.sleep(1)
@@ -23,9 +26,9 @@ event.pull("modem_message")
 end
 
 else
-if #ops < 5 then
+if #opsCount < 5 then
 
-if #ops > 2 then
+if #opsCount > 2 then
 print("Warning: This will cause damage due to amount of options.\nContinue?")
 input = io.read()
 if #input == 0 then
