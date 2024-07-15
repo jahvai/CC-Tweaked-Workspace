@@ -11,7 +11,7 @@ event.pull("modem_message")
 m.broadcast(1,"nanomachines", "getTotalInputCount")
 _, _, _, _, _, _, _, inputs = event.pull("modem_message")
 print(inputs)
-if ops == nil then
+if #ops == 0 then
 for i = 1, inputs do
 m.broadcast(1,"nanomachines", "setInput", i, true)
 os.sleep(1)
@@ -28,7 +28,7 @@ if #ops < 5 then
 if #ops > 2 then
 print("Warning: This will cause damage due to amount of options.\nContinue?")
 input = io.read()
-if input == "" then
+if #input == 0 then
 return
 end
 end
