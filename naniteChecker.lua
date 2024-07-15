@@ -35,7 +35,7 @@ if #input == 0 then
 return
 end
 end
-for i in ops do
+for i, ii in pairs(ops) do
 m.broadcast(1, "nanomachines", "setInput", i, true)
 end
 print("Done.")
