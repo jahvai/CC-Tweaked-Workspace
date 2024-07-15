@@ -37,7 +37,8 @@ end
 end
 for i, ii in pairs(ops) do
 print(i)
-m.broadcast(1,"nanomachines", "setInput", i, true)
+state = (args[1] ~= "flip")
+m.broadcast(1,"nanomachines", "setInput", tonumber(i), state)
 end
 print("Done.")
 else
