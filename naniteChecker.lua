@@ -36,7 +36,8 @@ return
 end
 end
 for i, ii in pairs(ops) do
-m.broadcast(1, "nanomachines", "setInput", i, true)
+print(i)
+m.broadcast(1,"nanomachines", "setInput", i, true)
 end
 print("Done.")
 else
