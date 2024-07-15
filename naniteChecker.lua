@@ -15,7 +15,7 @@ m.broadcast(1,"nanomachines", "setInput", i, true)
 os.sleep(1)
 m.broadcast(1,"nanomachines", "getActiveEffects")
 _, _, _, _, _, _, _, result = event.pull("modem_message")
+print(i, result)
 m.broadcast(1,"nanomachines", "setInput", i, false)
 event.pull("modem_message")
-print(result)
 end
