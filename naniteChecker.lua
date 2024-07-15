@@ -15,7 +15,6 @@ modem.broadcast(1,"nanomachines", "getActiveEffects")
 _, _, _, _, _, result = event.pull(10,"modem_message")
 print(result)
 modem.broadcast(1,"nanomachines", "setInput", i, false)
-os.sleep(1)
 end
 end
 modem.close(2)
