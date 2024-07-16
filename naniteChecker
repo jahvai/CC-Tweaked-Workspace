@@ -18,7 +18,7 @@ if args[1] == "clear" then
 for i = 1, inputs do
 m.broadcast(1,"nanomachines", "setInput", i, false)
 event.pull("modem_message")
-end
+end ""
 print("Done")
 else
 if opsCount == 0 then
