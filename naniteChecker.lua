@@ -14,6 +14,12 @@ event.pull("modem_message")
 m.broadcast(1,"nanomachines", "getTotalInputCount")
 _, _, _, _, _, _, _, inputs = event.pull("modem_message")
 print(inputs)
+if args[1] == "clear" then
+for i = 1, inputs do
+m.broadcast(1,"nanomachines", "setInput", i, false)
+event.pull("modem_message")
+end
+else
 if opsCount == 0 then
 for i = 1, inputs do
 m.broadcast(1,"nanomachines", "setInput", i, true)
@@ -39,9 +45,11 @@ for i, ii in pairs(ops) do
 print(i)
 state = (args[1] ~= "flip")
 m.broadcast(1,"nanomachines", "setInput", tonumber(i), state)
+os.sleep(1)
 end
 print("Done.")
 else
 print("Too many options.")
+end
 end
 end
