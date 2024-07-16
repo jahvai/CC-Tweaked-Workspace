@@ -16,6 +16,7 @@ _, _, _, _, _, _, _, inputs = event.pull("modem_message")
 print(inputs)
 if args[1] == "clear" then
 for i = 1, inputs do
+print(i)
 m.broadcast(1,"nanomachines", "setInput", i, false)
 event.pull("modem_message")
 end
