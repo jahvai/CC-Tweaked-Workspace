@@ -7,9 +7,9 @@ shell.setCompletionFunction("themeApplier", complete)
 
 filePath = arg[1]
 file = io.open(filePath)
-themeColor[i] = {}
+themeColor = {}
 
-for i = 1, 18 do
+for i = 1, 16 do
 themeColor[i] = string.gsub(file:read("l"), "#", "0x")
 themeColor[i] = tonumber(themeColor[i])
 end
