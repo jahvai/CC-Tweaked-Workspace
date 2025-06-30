@@ -6,6 +6,10 @@ shell.setCompletionFunction("themeApplier.lua", complete)
 shell.setCompletionFunction("themeApplier", complete)
 
 filePath = arg[1]
+if filePath == nil then
+filePath = read(nil,nil, shell.complete)
+end
+
 file = io.open(filePath)
 themeColor = {}
 
