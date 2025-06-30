@@ -2,7 +2,7 @@ local completion = require "cc.shell.completion"
 local complete = completion.build(
   completion.file 
 )
-shell.setCompletionFunction("example.lua", complete)
+shell.setCompletionFunction("themeApplier.lua", complete)
 
 filePath = arg[1]
 file = io.open(filePath)
