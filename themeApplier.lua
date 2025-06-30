@@ -14,8 +14,10 @@ themeColor[i] = string.gsub(file:read("l"), "#", "0x")
 themeColor[i] = tonumber(themeColor[i])
 end
 
-term.setBackgroundColor(themeColor[1])
-term.setTextColor(themeColor[2])
+term.setPaletteColor(colors.brown, themeColor[1])
+term.setBackgroundColor(colors.brown)
+term.setPaletteColor(colors.magenta, themeColor[2])
+term.setTextColor(colors.magenta)
 
 term.setPaletteColor(colors.black, themeColor[3])
 term.setPaletteColor(colors.gray, themeColor[4])
@@ -31,6 +33,8 @@ term.setPaletteColor(colors.cyan, themeColor[12])
 term.setPaletteColor(colors.lightBlue, themeColor[13])
 term.setPaletteColor(colors.blue, themeColor[14])
 term.setPaletteColor(colors.purple, themeColor[15])
-term.setPaletteColor(colors.magenta, themeColor[16])
-term.setPaletteColor(colors.pink, themeColor[17])
-term.setPaletteColor(colors.brown, themeColor[18])
+term.setPaletteColor(colors.pink, themeColor[16])
+
+
+
+
