@@ -1,5 +1,3 @@
-local buttonRenderer = {}
-
 function isInBetween(base, num1, num2)
 return (base >= num1 and base <= num2) or (base <= num1 and base >= num2)
 end

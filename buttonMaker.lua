@@ -1,4 +1,3 @@
-local completion = require "cc.completion"
 local name = arg[1]
 
 local function clear () 
@@ -41,7 +40,7 @@ paintutils.drawBox(x1,y1,x2,y2,colors.white)
 waitForClick()
 clear()
 print("Do you want it filled?")
-filled = read(nil, nil, function(text) completion.choice(text, {"true", "false"}) end)
+filled = read()
 filled = string.lower(filled) == "true"
 clear()
 if filled then 
