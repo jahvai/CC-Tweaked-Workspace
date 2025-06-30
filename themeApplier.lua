@@ -3,6 +3,7 @@ local complete = completion.build(
   completion.file 
 )
 shell.setCompletionFunction("themeApplier.lua", complete)
+shell.setCompletionFunction("themeApplier", complete)
 
 filePath = arg[1]
 file = io.open(filePath)
