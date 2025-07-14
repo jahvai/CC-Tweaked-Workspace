@@ -1,6 +1,4 @@
-function isInBetween(base, num1, num2)
-return (base >= num1 and base <= num2) or (base <= num1 and base >= num2)
-end
+utilApi = require("utilityApi")
 
 function readButton(file)
 local fileHandle = io.open("/ui/buttons/"..file)
@@ -48,9 +46,9 @@ break
 elseif event == "mouse_click" and mouseKey == 1 then
 
 for i = 1, #connections do
-if isInBetween(
+if utilApi.isInBetween(
 x, connections[i][1][1], connections[i][1][3]
-) and isInBetween(
+) and utilApi.isInBetween(
 y, connections[i][1][2], connections[i][1][4]
 ) then
 connections[i][2]()
