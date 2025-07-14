@@ -9,4 +9,8 @@ end
 
 file = arg[1]
 filename = arg[2]
+if string.lower(arg[2]) != "run" then
 shell.run("wget", "https://raw.githubusercontent.com/jahvai/CC-Tweaked-Workspace/refs/heads/main/"..file, filename)
+else
+shell.run("wget", "run", "https://raw.githubusercontent.com/jahvai/CC-Tweaked-Workspace/refs/heads/main/"..file)
+end
