@@ -1,5 +1,5 @@
 if arg[1] == nil then
-print("Name of File To Retrieve:")
+write("Name of File To Retrieve: ")
 arg[1] = read()
 end
 
