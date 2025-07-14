@@ -19,14 +19,15 @@ themeColor[i] = tonumber(themeColor[i])
 end
 
 term.setPaletteColor(colors.brown, themeColor[1])
-term.setBackgroundColor(colors.brown)
 term.setPaletteColor(colors.magenta, themeColor[2])
-term.setTextColor(colors.magenta)
 
 term.setPaletteColor(colors.black, themeColor[3])
 term.setPaletteColor(colors.gray, themeColor[4])
 term.setPaletteColor(colors.lightGray, themeColor[5])
 term.setPaletteColor(colors.white, themeColor[6])
+
+term.setBackgroundColor(colors.black)
+term.setTextColor(colors.white)
 
 term.setPaletteColor(colors.red, themeColor[7])
 term.setPaletteColor(colors.orange, themeColor[8])
