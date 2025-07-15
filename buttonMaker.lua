@@ -10,8 +10,7 @@ end
 local width, height = term.getSize()
 
 local function waitForClick ()
-local oldx, oldy
-oldx, oldy = term.getCursorPos()
+local oldx, oldy = term.getCursorPos()
 term.setCursorPos(1, height)
 term.setBackgroundColor(colors.black)
 term.setTextColor(colors.white)
