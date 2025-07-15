@@ -5,13 +5,14 @@ local complete = completion.build(
 shell.setCompletionFunction("themeApplier.lua", complete)
 shell.setCompletionFunction("themeApplier", complete)
 
-filePath = arg[1]
+local filePath = arg[1]
 if filePath == nil then
 filePath = read(nil,nil, shell.complete)
 end
 
-file = io.open(filePath)
-themeColor = {}
+local file = io.open(filePath)
+assert(file)
+local themeColor = {}
 
 for i = 1, 16 do
 themeColor[i] = string.gsub(file:read("l"), "#", "0x")

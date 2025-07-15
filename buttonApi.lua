@@ -1,7 +1,8 @@
-utilApi = require("utilityApi")
+local utilApi = require("utilityApi")
 
-function readButton(file)
+local function readButton(file)
 local fileHandle = io.open("/ui/buttons/"..file)
+assert(fileHandle)
 local data = {}
 
 for i = 1, 8 do
@@ -18,7 +19,7 @@ data[7] = tonumber(data[7])
 return data
 end
 
-function writeButton(data)
+local function writeButton(data)
 local x1, y1, x2, y2, filled, textX, textY, text = unpack(data)
 
 local backgroundColor = colors.white
@@ -36,7 +37,7 @@ term.setTextColor(colors.white)
 term.setBackgroundColor(colors.black)
 end
 
-function connectFunction(connections)
+local function connectFunction(connections)
 while true do
 local event, mouseKey, x, y = os.pullEvent()
 if event == "stopUI" then

@@ -10,6 +10,7 @@ end
 local width, height = term.getSize()
 
 local function waitForClick ()
+local oldx, oldy
 oldx, oldy = term.getCursorPos()
 term.setCursorPos(1, height)
 term.setBackgroundColor(colors.black)
@@ -26,7 +27,7 @@ print(
 waitForClick()
 clear()
 local button, x1, y1, x2, y2
-
+local filled, text, ySize, xSize, yHalfSize, xHalfSize, textOffset, finalTextX, finalTextY
 repeat
 _, button, x1, y1 = os.pullEvent("mouse_click")
 until button == 1
@@ -65,7 +66,9 @@ write(text)
 end
 waitForClick()
 clear()
+local file
 file = io.open("/ui/buttons/"..name, "w+")
+assert(file)
 file:write(
 x1.."\n"..y1.."\n"..x2.."\n"..y2.."\n"..tostring(filled).."\n"..finalTextX.." \n"..finalTextY.." \n"..text
 )
