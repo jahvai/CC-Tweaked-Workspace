@@ -9,5 +9,8 @@ term.setCursorPos(0, 0)
 shell.run("clear")
 end
 
+local function getPressesa()
+
+end
 
 return { isInBetween = isInBetween, clear = clear}
