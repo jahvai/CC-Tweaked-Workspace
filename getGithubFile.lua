@@ -3,7 +3,7 @@ if arg[1] == nil then
     arg[1] = read()
 end
 
-if arg[2] == nil then
+if (arg[2] == nil) or (arg[2] == "nil") then
     arg[2] = arg[1]
 end
 
