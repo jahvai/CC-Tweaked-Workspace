@@ -1,3 +1,10 @@
+local completion = require "cc.shell.completion"
+local complete = completion.build(
+  completion.file 
+)
+shell.setCompletionFunction("getGithubFile.lua", complete)
+shell.setCompletionFunction("getGithubFile", complete)
+
 if arg[1] == nil then
     write("Name of File To Retrieve: ")
     arg[1] = read()
