@@ -29,10 +29,10 @@ local function displayCheckerboard()
     for yAxis = 1, y do
         for xAxis = 1, x do
             term.setCursorPos(xAxis,yAxis)
-            if xAxis % 2 == 0 then
-                term.blit(" ", "f", "f")
-            else
+            if xAxis+yAxis % 2 == 0 then
                 term.blit(" ", "0", "0")
+            else
+                term.blit(" ", "f", "f")
             end
         end    
     end
