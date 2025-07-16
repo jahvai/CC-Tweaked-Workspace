@@ -42,10 +42,20 @@ local function displayCheckerboard(patternFunction)
     end
 end
 
+local function runningTotal(table, name, entry)
+    if table[name] then
+        table[name] = table[name] + entry
+    else
+        table[name] = entry
+    end
+    return table
+end
+
 return { 
     isInBetween = isInBetween, 
     clear = clear, 
     getScreenInput = getScreenInput, 
     simpleCheckerboard = simpleCheckerboard,
-    displayCheckerboard = displayCheckerboard
+    displayCheckerboard = displayCheckerboard,
+    runningTotal = runningTotal
 }
