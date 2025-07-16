@@ -24,4 +24,23 @@ local function getScreenInput()
     return mouseKey, id, x, y
 end
 
-return { isInBetween = isInBetween, clear = clear, getScreenInput = getScreenInput}
+local function displayCheckerboard()
+    local x, y = term.getSize()
+    for yAxis = 1, y do
+        for xAxis = 1, x do
+            term.setCursorPos(xAxis,yAxis)
+            if xAxis % 2 == 0 then
+                term.blit(" ", colors.black, colors.black)
+            else
+                term.blit(" ", colors.white, colors.white)
+            end
+        end    
+    end
+end
+
+return { 
+    isInBetween = isInBetween, 
+    clear = clear, 
+    getScreenInput = getScreenInput, 
+    displayCheckerboard = displayCheckerboard
+}
