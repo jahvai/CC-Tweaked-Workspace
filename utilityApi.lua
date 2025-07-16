@@ -24,12 +24,16 @@ local function getScreenInput()
     return mouseKey, id, x, y
 end
 
-local function displayCheckerboard()
+local function simpleCheckerboard(x, y)
+    return (x + y) % 2 == 0
+end
+
+local function displayCheckerboard(patternFunction)
     local x, y = term.getSize()
     for yAxis = 1, y do
         for xAxis = 1, x do
             term.setCursorPos(xAxis,yAxis)
-            if xAxis+yAxis % 2 == 0 then
+            if patternFunction(xAxis, yAxis) then
                 term.blit(" ", "0", "0")
             else
                 term.blit(" ", "f", "f")
@@ -42,5 +46,6 @@ return {
     isInBetween = isInBetween, 
     clear = clear, 
     getScreenInput = getScreenInput, 
+    simpleCheckerboard = simpleCheckerboard,
     displayCheckerboard = displayCheckerboard
 }
