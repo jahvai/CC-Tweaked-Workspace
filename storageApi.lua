@@ -24,6 +24,7 @@ local function getAllItems(inventories)
     return items, allItems
 end
 
+-- Reset item list after adding getting.
 local function requestItem(outputInventory, itemName, itemList)
     if type(outputInventory) == "string" then
         outputInventory = peripheral.wrap(outputInventory)
