@@ -57,6 +57,20 @@ local function printKeyValues(valueTable)
     end
 end
 
+local function titleCase(baseString)
+    local findStart, findEnd
+    baseString = string.lower(baseString)
+    local i = 1
+    repeat
+        findStart, findEnd = string.find(baseString,"%l[^%l]", i)
+        if findStart then
+            baseString[findStart] = string.upper(baseString[findStart])
+        end
+        i = findEnd + 1
+    until not findStart
+    return baseString
+end
+
 return { 
     isInBetween = isInBetween, 
     clear = clear, 
@@ -64,5 +78,6 @@ return {
     simpleCheckerboard = simpleCheckerboard,
     displayCheckerboard = displayCheckerboard,
     runningTotal = runningTotal,
-    printKeyValues = printKeyValues
+    printKeyValues = printKeyValues,
+    titleCase = titleCase
 }
