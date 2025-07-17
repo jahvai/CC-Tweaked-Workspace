@@ -62,7 +62,7 @@ local function titleCase(baseString)
     baseString = string.lower(baseString)
     local i = 1
     repeat
-        findStart, findEnd = string.find(baseString,"%l[^%l]", i)
+        findStart, findEnd = string.find(baseString,"%l+", i)
         if findStart then
             baseString = baseString:sub(1, findStart - 1)..string.upper(baseString:sub(findStart, findStart))..baseString:sub(findStart + 1)
         end
