@@ -5,6 +5,10 @@ local function findInventories()
 end
 
 local function getAllItems(inventories)
+    if not inventories then
+        inventories = findInventories()
+    end
+
     local items = {}
     for i, s in ipairs(inventories) do
         items[i] = {}
