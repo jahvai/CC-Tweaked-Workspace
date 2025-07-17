@@ -73,6 +73,15 @@ local function titleCase(baseString)
     return baseString
 end
 
+local function prettyItemName(itemName)
+    local endIndex
+    _, endIndex = string.find(itemName, "%g+:")
+    itemName = itemName:sub(endIndex + 1)
+    itemName = itemName:gsub("_", " ")
+    itemName = titleCase(itemName)
+    return itemName
+end
+
 return { 
     isInBetween = isInBetween, 
     clear = clear, 
@@ -81,5 +90,6 @@ return {
     displayCheckerboard = displayCheckerboard,
     runningTotal = runningTotal,
     printKeyValues = printKeyValues,
-    titleCase = titleCase
+    titleCase = titleCase,
+    prettyItemName = prettyItemName
 }
