@@ -51,7 +51,7 @@ local function runningTotal(storageTable, name, entry)
     return storageTable
 end
 
-local function printKeyValue(valueTable)
+local function printKeyValues(valueTable)
     for k, v in pairs(valueTable) do
         print(k..": "..v)
     end
@@ -64,5 +64,5 @@ return {
     simpleCheckerboard = simpleCheckerboard,
     displayCheckerboard = displayCheckerboard,
     runningTotal = runningTotal,
-    printKeyValue = printKeyValue
+    printKeyValues = printKeyValues
 }
