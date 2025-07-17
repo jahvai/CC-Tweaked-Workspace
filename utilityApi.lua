@@ -66,7 +66,9 @@ local function titleCase(baseString)
         if findStart then
             baseString = baseString:sub(1, findStart - 1)..string.upper(baseString:sub(findStart, findStart))..baseString:sub(findStart + 1)
         end
+        if findEnd then
         i = findEnd + 1
+        end
     until not findStart
     return baseString
 end
