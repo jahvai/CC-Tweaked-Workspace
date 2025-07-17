@@ -42,13 +42,19 @@ local function displayCheckerboard(patternFunction)
     end
 end
 
-local function runningTotal(table, name, entry)
-    if table[name] then
-        table[name] = table[name] + entry
+local function runningTotal(storageTable, name, entry)
+    if storageTable[name] then
+        storageTable[name] = storageTable[name] + entry
     else
-        table[name] = entry
+        storageTable[name] = entry
     end
-    return table
+    return storageTable
+end
+
+local function printKeyValue(valueTable)
+    for k, v in pairs(valueTable) do
+        print(k..": "..v)
+    end
 end
 
 return { 
@@ -57,5 +63,6 @@ return {
     getScreenInput = getScreenInput, 
     simpleCheckerboard = simpleCheckerboard,
     displayCheckerboard = displayCheckerboard,
-    runningTotal = runningTotal
+    runningTotal = runningTotal,
+    printKeyValue = printKeyValue
 }

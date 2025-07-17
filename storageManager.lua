@@ -1,16 +1,17 @@
-local util = require("utilityApi")
-
-local storages = table.pack(
-peripheral.find("inventory")
-)
-
-local totals = {}
-for i, s in ipairs(storages) do
-for k, v in pairs(s.list()) do
-totals = util.runningTotal(totals, v.name, v.count)
-end
+local function findInventories()
+    return table.pack(
+    peripheral.find("inventory")
+    )
 end
 
-for k, v in pairs(totals) do
-    print(k..": "..v)
+local function getAllItems(inventories)
+    local items = {}
+    for i, s in ipairs(inventories) do
+        for k, v in pairs(s.list()) do
+            items[i][k] = v
+        end
+    end
+    return items
 end
+
+return { findInventories = findInventories, getAllItems = getAllItems}
