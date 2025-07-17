@@ -16,7 +16,8 @@ local function getAllItems(inventories)
         items[invIndex] = {}
         for slot, itemData in pairs(storage.list()) do
             items[invIndex][slot] = itemData
-            allItems[index] = {itemData, inventories[invIndex], slot}
+            allItems[index] = {}
+            allItems[index] = {itemData, peripheral.getName(inventories[invIndex]), slot}
             index = index + 1
         end
     end
@@ -24,13 +25,17 @@ local function getAllItems(inventories)
 end
 
 local function requestItem(outputInventory, itemName, itemList)
+    if type(outputInventory) == "string" then
+        outputInventory = peripheral.wrap(outputInventory)
+    end
     for i, v in ipairs(itemList) do
-        if v[1] == itemName then
+        if (v[1].name == itemName) and (v[2] ~= peripheral.getName(outputInventory)) then
             outputInventory.pullItems(v[2], v[3])
-            return true
+            itemList = table.remove(itemList, i)
+            return true, itemList
         end
     end
-    return false
+    return false, itemList
 end
 
 return { findInventories = findInventories, getAllItems = getAllItems, requestItem = requestItem}
