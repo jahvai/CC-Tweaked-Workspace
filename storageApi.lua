@@ -42,8 +42,14 @@ local function requestItem(outputInventory, itemName, itemList)
     for _, outputInventoryPeripheral in ipairs(outputInventory) do 
         for itemIndex, itemData in ipairs(itemList) do
             for _, currentItem in ipairs(itemName) do
-                if (itemData[1].name == currentItem) and (itemData[2] ~= peripheral.getName(outputInventoryPeripheral)) then
-                    if outputInventoryPeripheral.pullItems(itemData[2], itemData[3]) then
+                isAnOutputInventory = false
+                for _, v in ipairs(outputInventory) do
+                    if itemData[2] == peripheral.getName(outputInventoryPeripheral) then
+                        isAnOutputInventory = true
+                    end
+                end
+                if (itemData[1].name == currentItem) and (not isAnOutputInventory) then
+                    if outputInventoryPeripheral.pullItems(itemData[2], itemData[3]) ~= 0 then
                         table.remove(itemList, itemIndex)
                         return true, itemList
                     end
