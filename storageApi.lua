@@ -48,7 +48,7 @@ local function requestItem(outputInventory, itemName, itemList)
                         isAnOutputInventory = true
                     end
                 end
-                if (itemData[1].name == currentItem) and (isAnOutputInventory ~= true) then
+                if ((itemData[1].name == currentItem) or (currentItem == "any")) and (isAnOutputInventory ~= true) then
                     if outputInventoryPeripheral.pullItems(itemData[2], itemData[3]) ~= 0 then
                         table.remove(itemList, itemIndex)
                         return true, itemList
