@@ -40,8 +40,8 @@ local function requestItem(outputInventory, itemName, itemList)
     end
 
     for _, outputInventoryPeripheral in ipairs(outputInventory) do 
-        for itemIndex, itemData in ipairs(itemList) do
-            for _, currentItem in ipairs(itemName) do
+        for _, currentItem in ipairs(itemName) do
+            for itemIndex, itemData in ipairs(itemList) do
                 isAnOutputInventory = false
                 for _, v in ipairs(outputInventory) do
                     if itemData[2] == peripheral.getName(v) then
