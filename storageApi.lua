@@ -43,10 +43,10 @@ local function requestItem(outputInventory, itemName, itemList)
         for itemIndex, itemData in ipairs(itemList) do
             for _, currentItem in ipairs(itemName) do
                 if (itemData[1].name == currentItem) and (itemData[2] ~= peripheral.getName(outputInventoryPeripheral)) then
-                    if not outputInventoryPeripheral.pullItems(itemData[2], itemData[3]) then goto continueLoop end
-                    itemList = table.remove(itemList, itemIndex)
-                    return true, itemList
-                    ::continueLoop::
+                    if outputInventoryPeripheral.pullItems(itemData[2], itemData[3]) then
+                        itemList = table.remove(itemList, itemIndex)
+                        return true, itemList
+                    end
                 end
             end
         end
