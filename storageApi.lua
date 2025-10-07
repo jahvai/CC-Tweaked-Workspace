@@ -49,8 +49,11 @@ local function requestItem(outputInventory, itemName, itemList)
                     end
                 end
                 if ((itemData[1].name == currentItem) or (currentItem == "any")) and (isAnOutputInventory ~= true) then
-                    if outputInventoryPeripheral.pullItems(itemData[2], itemData[3]) ~= 0 then
-                        table.remove(itemList, itemIndex)
+                    pulledItems = outputInventoryPeripheral.pullItems(itemData[2], itemData[3])
+                    if pulledItems ~= 0 then
+                        itemList[itemIndex].count = itemList[itemIndex].count - pulledItems
+                        if itemList[itemIndex].count < 1
+                            table.remove(itemList, itemIndex)
                         return true, itemList
                     end
                 end
