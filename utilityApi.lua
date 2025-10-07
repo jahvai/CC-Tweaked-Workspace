@@ -104,7 +104,7 @@ local function printPages(stringTable, pageTitle, lineAmount, printerPeripheral)
         else
             cursorLine = i % lineAmount
         end
-        if cursorLine == 1 then
+        if cursorLine == 1 and i ~= 1 then
             printerPeripheral.endPage()
             printerPeripheral.newPage()
             printerPeripheral.setPageTitle(pageTitle)
