@@ -83,6 +83,9 @@ local function prettyItemName(itemName)
 end
 
 local function shortenName(baseName, stringLength, addSuffix)
+    if string.len(baseName) <= stringLength then
+        addSuffix = ""
+    end
     return string.sub(baseName, 1, stringLength)..addSuffix
 end
 
