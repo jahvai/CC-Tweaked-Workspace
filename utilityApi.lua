@@ -94,21 +94,22 @@ local function printPages(stringTable, pageTitle, lineAmount, printerPeripheral)
         printerPeripheral = peripheral.wrap("printer")
     end
     if not lineAmount then
-        lineAmount = 22
+        lineAmount = 21
     end
     printerPeripheral.newPage()
     printerPeripheral.setPageTitle(pageTitle)
     for i, v in ipairs(stringTable) do
-        if i % 22 == 0 then
+        if i % lineAmount == 0 then
+            cursorLine = lineAmount
+        else
+            cursorLine = i % lineAmount
+        end
+        if cursorLine == 1 then
             printerPeripheral.endPage()
             printerPeripheral.newPage()
             printerPeripheral.setPageTitle(pageTitle)
         end
-        if i % 21 == 0 then
-            cursorLine = 21
-        else
-            cursorLine = i % 21
-        end
+
         printerPeripheral.setCursorPos(1, cursorLine)
         printerPeripheral.write(v)
     end
