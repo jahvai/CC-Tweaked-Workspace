@@ -99,7 +99,7 @@ local function printPages(stringTable, pageTitle, lineAmount, printerPeripheral)
     printerPeripheral.newPage()
     printerPeripheral.setPageTitle(pageTitle)
     for i, v in ipairs(stringTable) do
-        if i == 21
+        if i == 21 then
             printerPeripheral.endPage()
             printerPeripheral.newPage()
             printerPeripheral.setPageTitle(pageTitle)
