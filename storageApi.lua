@@ -54,6 +54,7 @@ local function requestItem(outputInventory, itemName, itemList)
                         itemList[itemIndex].count = itemList[itemIndex].count - pulledItems
                         if itemList[itemIndex].count < 1 then
                             table.remove(itemList, itemIndex)
+                        end
                         return true, itemList
                     end
                 end
