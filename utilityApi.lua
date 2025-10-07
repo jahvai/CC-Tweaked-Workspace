@@ -89,6 +89,27 @@ local function shortenName(baseName, stringLength, addSuffix)
     return string.sub(baseName, 1, stringLength)..addSuffix
 end
 
+local function printPages(stringTable, pageTitle, lineAmount, printerPeripheral)
+    if not printerPeripheral then
+        printerPeripheral = peripheral.wrap("printer")
+    end
+    if not lineAmount then
+        lineAmount = 21
+    end
+    printerPeripheral.newPage()
+    printerPeripheral.setPageTitle(pageTitle)
+    for i, v in ipairs(stringTable) do
+        if i == 21
+            printerPeripheral.endPage()
+            printerPeripheral.newPage()
+            printerPeripheral.setPageTitle(pageTitle)
+        end
+        printerPeripheral.setCursorPos(1,(i%21)+1)
+        printerPeripheral.write(v)
+    end
+    printerPeripheral.endPage()
+end
+
 return { 
     isInBetween = isInBetween, 
     clear = clear, 
@@ -99,5 +120,6 @@ return {
     printKeyValues = printKeyValues,
     titleCase = titleCase,
     prettyItemName = prettyItemName,
-    shortenName = shortenName
+    shortenName = shortenName,
+    printPages = printPages
 }
