@@ -82,6 +82,16 @@ local function prettyItemName(itemName)
     return itemName
 end
 
+local function shortenName(baseName, stringLength, addSuffix)
+    local suffixString
+    if addSuffix then
+        suffixString = "..."
+    else
+        suffixString = ""
+    end
+    return string.sub(baseName, 1, stringLength)..suffixString
+end
+
 return { 
     isInBetween = isInBetween, 
     clear = clear, 
@@ -91,5 +101,6 @@ return {
     runningTotal = runningTotal,
     printKeyValues = printKeyValues,
     titleCase = titleCase,
-    prettyItemName = prettyItemName
+    prettyItemName = prettyItemName,
+    shortenName = shortenName
 }
