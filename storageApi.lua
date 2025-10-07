@@ -4,9 +4,18 @@ local function findInventories()
     )
 end
 
-local function getAllItems(inventories)
+local function getAllItems(inventories)    
     if not inventories then
         inventories = findInventories()
+    end
+    if type(inventories) ~= "table" then
+        inventories = {inventories}
+    end
+
+    for i, v in ipairs(inventories) do
+        if type(v) == "string" then
+            inventories[i] = peripheral.wrap(v)
+        end
     end
 
     local items = {}
@@ -51,8 +60,8 @@ local function requestItem(outputInventory, itemName, itemList)
                 if ((itemData[1].name == currentItem) or (currentItem == "any")) and (isAnOutputInventory ~= true) then
                     pulledItems = outputInventoryPeripheral.pullItems(itemData[2], itemData[3])
                     if pulledItems ~= 0 then
-                        itemList[itemIndex].count = itemList[itemIndex].count - pulledItems
-                        if itemList[itemIndex].count < 1 then
+                        itemList[itemIndex][1].count = itemList[itemIndex][1].count - pulledItems
+                        if itemList[itemIndex][1].count < 1 then
                             table.remove(itemList, itemIndex)
                         end
                         return true, itemList
