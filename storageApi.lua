@@ -52,7 +52,7 @@ local function requestItem(outputInventory, itemName, itemList)
                     pulledItems = outputInventoryPeripheral.pullItems(itemData[2], itemData[3])
                     if pulledItems ~= 0 then
                         itemList[itemIndex].count = itemList[itemIndex].count - pulledItems
-                        if itemList[itemIndex].count < 1
+                        if itemList[itemIndex].count < 1 then
                             table.remove(itemList, itemIndex)
                         return true, itemList
                     end
