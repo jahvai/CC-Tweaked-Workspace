@@ -1,8 +1,11 @@
 local modem = peripheral.find("modem")
 
 
-local function sendNetworkMessage(port, data)
-    modem
+local function getResponse(port, data)
+    modem.transmit(port,port,data)
+    if not modem.isOpen(port) then
+        modem.open(port)
+    end
 end
 
 
