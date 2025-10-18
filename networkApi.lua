@@ -11,7 +11,7 @@ end
 
 
 local function runCallbacks(message, callbackTable)
-    for k, v, pairs(callbackTable) do
+    for k, v in pairs(callbackTable) do
         if (message[1] == k) and type(message[2] == "table") then
             v(table.unpack(message[2]))
         end
@@ -29,7 +29,7 @@ local function getResponse(port, code, data)
     local networkMessage
     repeat
         _, _, _, _, networkMessage, _ = os.pullEvent("modem_message")
-    until networkMessage[1] = code
+    until networkMessage[1] == code
 
     if not portWasOpen then
         modem.close(port)
@@ -38,7 +38,7 @@ local function getResponse(port, code, data)
 end
 
 
-local networkApiTable = {modem = modem, getResponse = getResponse}
+local networkApiTable = {modem = modem, getResponse = getResponse, runCallbacks = runCallbacks}
 networkApiTable["client"] = {}
 networkApiTable["server"] = {setUpServer = setUpServer}
 
