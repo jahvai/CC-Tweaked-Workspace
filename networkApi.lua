@@ -5,13 +5,18 @@ local function setUpServer(serverCode)
     return {code = serverCode}
 end
 
-local function createCallback(name, func)
-    return {name, func}
+--  Callback Structure
 -- {code, {function: str, params: table}}
 -- function(table.unpack(table))
-end
 
-local function runCallbacks()
+
+local function runCallbacks(message, callbackTable)
+    for k, v, pairs(callbackTable) do
+        if (message[1] == k) and type(message[2] == "table") then
+            v(table.unpack(message[2]))
+        end
+    end
+end
 
 local function getResponse(port, code, data)
     portWasOpen = modem.isOpen(port)
