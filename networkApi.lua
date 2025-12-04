@@ -18,7 +18,10 @@ local function runCallbacks(message, callbackTable)
     end
 end
 
-local function getResponse(port, code, data)
+local function getResponse(port, code, data, modem)
+    if modem ~= table then
+        modem = peripheral.find("modem")
+    end
     portWasOpen = modem.isOpen(port)
     if not portWasOpen then
         modem.open(port)
@@ -34,6 +37,7 @@ local function getResponse(port, code, data)
     if not portWasOpen then
         modem.close(port)
     end
+    table.remove(networkMessage, 1)
     return table.unpack(networkMessage)
 end
 
