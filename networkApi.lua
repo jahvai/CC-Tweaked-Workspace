@@ -13,7 +13,7 @@ end
 local function runCallbacks(message, callbackTable)
     for k, v in pairs(callbackTable) do
         if (message[1] == k) and type(message[2] == "table") then
-            v(table.unpack(message[2]))
+            return v(table.unpack(message[2]))
         end
     end
 end
