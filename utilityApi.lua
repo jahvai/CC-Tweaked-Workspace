@@ -52,8 +52,9 @@ local function runningTotal(storageTable, name, entry)
 end
 
 local function getKeyValues(valueTable)
-    keys, values = {}
-    i = 1
+    local keys = {}
+    local values = {}
+    local i = 1
     for k, v in pairs(valueTable) do
         keys[i] = k
         values[i] = v
@@ -128,7 +129,7 @@ return {
     simpleCheckerboard = simpleCheckerboard,
     displayCheckerboard = displayCheckerboard,
     runningTotal = runningTotal,
-    printKeyValues = printKeyValues,
+    getKeyValues = getKeyValues,
     titleCase = titleCase,
     prettyItemName = prettyItemName,
     shortenName = shortenName,
