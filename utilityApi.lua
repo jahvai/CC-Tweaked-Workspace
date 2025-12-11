@@ -51,7 +51,7 @@ local function runningTotal(storageTable, name, entry)
     return storageTable
 end
 
-local function printKeyValues(valueTable)
+local function getKeyValues(valueTable)
     keys, values = {}
     i = 1
     for k, v in pairs(valueTable) do
