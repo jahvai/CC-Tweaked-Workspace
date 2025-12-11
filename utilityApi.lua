@@ -52,9 +52,14 @@ local function runningTotal(storageTable, name, entry)
 end
 
 local function printKeyValues(valueTable)
+    keys, values = {}
+    i = 1
     for k, v in pairs(valueTable) do
-        print(k..": "..v)
+        keys[i] = k
+        values[i] = v
+        i = i + 1
     end
+    return keys, values
 end
 
 local function titleCase(baseString)
